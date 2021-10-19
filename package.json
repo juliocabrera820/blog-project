@@ -1,0 +1,23 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "proyecto para la optativa de API y SPA",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliocabrera820/blog-project.git"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "julio cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliocabrera820/blog-project/issues"
+  },
+  "homepage": "https://github.com/juliocabrera820/blog-project#readme"
+}

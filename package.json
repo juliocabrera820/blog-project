@@ -27,6 +27,8 @@
         "express": "^4.17.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.13"
+        "eslint": "^8.0.1",
+        "nodemon": "^2.0.13",
+        "prettier": "2.4.1"
     }
 }

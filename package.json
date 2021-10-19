@@ -1,23 +1,32 @@
 {
-  "name": "blog-project",
-  "version": "1.0.0",
-  "description": "proyecto para la optativa de API y SPA",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/juliocabrera820/blog-project.git"
-  },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
-  "author": "julio cabrera",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/juliocabrera820/blog-project/issues"
-  },
-  "homepage": "https://github.com/juliocabrera820/blog-project#readme"
+    "name": "blog-project",
+    "version": "1.0.0",
+    "description": "proyecto para la optativa de API y SPA",
+    "main": "",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/juliocabrera820/blog-project.git"
+    },
+    "keywords": [
+        "example",
+        "heroku"
+    ],
+    "author": "julio cabrera",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/juliocabrera820/blog-project/issues"
+    },
+    "homepage": "https://github.com/juliocabrera820/blog-project#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.13"
+    }
 }

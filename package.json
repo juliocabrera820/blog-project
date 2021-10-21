@@ -6,7 +6,12 @@
     "scripts": {
         "start": "node src/server.js",
         "dev": "nodemon src/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prettier": "prettier . --w --ignore-unknown",
+        "create": "sequelize-cli db:create",
+        "drop": "sequelize-cli db:drop",
+        "migrate": "sequelize-cli db:migrate",
+        "reset": "npm run drop && npm run create && npm run migrate",
+        "test": "jest --detectOpenHandles"
     },
     "repository": {
         "type": "git",
@@ -24,11 +29,17 @@
     "homepage": "https://github.com/juliocabrera820/blog-project#readme",
     "dependencies": {
         "cors": "^2.8.5",
-        "express": "^4.17.1"
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "pg": "^8.7.1",
+        "sequelize": "^6.7.0"
     },
     "devDependencies": {
         "eslint": "^8.0.1",
+        "jest": "^27.3.1",
         "nodemon": "^2.0.13",
-        "prettier": "2.4.1"
+        "prettier": "2.4.1",
+        "sequelize-cli": "^6.2.0",
+        "supertest": "^6.1.6"
     }
 }

@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const homeController = require('./app/controllers/HomeController');
 const authenticationController = require('./app/controllers/AuthenticationController');
+const suscriptionController = require('./app/controllers/SuscriptionController');
 
-router.get('/', homeController.index);
 router.post('/signUp', authenticationController.signUp);
 router.post('/signIn', authenticationController.signIn);
+router.post('/suscription', suscriptionController.sendEmail);
 
 module.exports = router;

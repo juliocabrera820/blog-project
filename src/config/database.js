@@ -9,6 +9,6 @@ module.exports = {
     database: process.env.DB_NAME,
   },
   production: {
-    use_env_variable: process.env.DATABASE_URL,
+    use_env_variable: process.env.JAWSDB_URL,
   },
 };

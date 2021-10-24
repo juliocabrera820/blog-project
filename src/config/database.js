@@ -8,8 +8,4 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   },
-  production: {
-    use_env_variable: process.env.JAWSDB_URL,
-    dialect: 'postgres',
-  },
 };

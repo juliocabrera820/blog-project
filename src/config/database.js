@@ -1,9 +1,23 @@
+/* eslint-disable no-undef */
 require('dotenv').config();
 
 module.exports = {
-  dialect: process.env.DB_DIALECT,
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  development: {
+    database: 'blog_development',
+    dialect: 'postgres',
+  },
+  test: {
+    database: 'blog_test',
+    dialect: 'postgres',
+  },
+  production: {
+    use_env_variable: DATABASE_URL,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        required: true,
+        rejectUnauthorized: false,
+      },
+    },
+  },
 };

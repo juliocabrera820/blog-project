@@ -15,8 +15,10 @@ module.exports = {
     operatorAliases: false,
     ssl: true,
     dialectOptions: {
-      ssl: true,
-      rejectUnauthorized: false,
+      ssl: {
+        required: true,
+        rejectUnauthorized: false,
+      },
     },
   },
 };

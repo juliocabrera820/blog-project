@@ -8,7 +8,12 @@ if (process.env.DATABASE_URL) {
   connection = new sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
-    logging: true,
+    dialectOptions: {
+      ssl: {
+        required: true,
+        rejectUnauthorized: false,
+      },
+    },
   });
 } else {
   connection = new sequelize(config);

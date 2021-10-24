@@ -7,9 +7,9 @@
         "start": "node src/server.js",
         "dev": "nodemon src/server.js",
         "prettier": "prettier . --w --ignore-unknown",
-        "create": "sequelize-cli db:create",
-        "drop": "sequelize-cli db:drop",
-        "migrate": "sequelize-cli db:migrate",
+        "create": "npx sequelize-cli db:create",
+        "drop": "npx sequelize-cli db:drop",
+        "migrate": "npx sequelize-cli db:migrate",
         "reset": "npm run drop && npm run create && npm run migrate",
         "test": "jest --detectOpenHandles"
     },

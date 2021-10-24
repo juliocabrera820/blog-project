@@ -8,4 +8,7 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   },
+  production: {
+    DATABASE_URL: process.env.DATABASE_URL,
+  },
 };

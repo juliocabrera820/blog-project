@@ -1,0 +1,19 @@
+{
+    "development": {
+        "database": "backend_blog_development",
+        "dialect": "postgres"
+    },
+    "test": {
+        "database": "backend_blog_test",
+        "dialect": "postgres"
+    },
+    "production": {
+        "use_env_variable": "DATABASE_URL",
+        "dialect": "postgres",
+        "dialectOptions": {
+            "ssl": {
+                "rejectUnauthorized": false
+            }
+        }
+    }
+}

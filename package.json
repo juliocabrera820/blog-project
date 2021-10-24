@@ -44,5 +44,8 @@
         "prettier": "2.4.1",
         "sequelize-cli": "^6.2.0",
         "supertest": "^6.1.6"
+    },
+    "engines": {
+        "node": "12.x"
     }
 }

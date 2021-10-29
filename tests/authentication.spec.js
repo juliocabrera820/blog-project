@@ -28,6 +28,13 @@ describe('POST /signUp', () => {
     expect(status).toBe(400);
     expect(body.message).toBe('User already exists');
   });
+  test('should return 400 status code and an error object', async () => {
+    const { status, body } = await request(app)
+      .post('/api/v1/signUp')
+      .send({ username: 'jules', email: 'jules@gmail.com', password: '' });
+    expect(status).toBe(400);
+    expect(body).toHaveProperty('error');
+  });
 });
 
 describe('POST /signIn', () => {
@@ -55,5 +62,12 @@ describe('POST /signIn', () => {
       .send({ email: 'jules@gmail.com', password: '123456789' });
     expect(status).toBe(400);
     expect(body.message).toBe('Email or password incorrect');
+  });
+  test('should return 400 status code and an error object', async () => {
+    const { status, body } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '' });
+    expect(status).toBe(400);
+    expect(body).toHaveProperty('error');
   });
 });

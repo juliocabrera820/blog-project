@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const app = require('../src/app');
 const User = require('../src/app/models/user');
+const createUser = require('./factories/user');
 const request = require('supertest');
 
 beforeEach(async () => {
@@ -19,9 +20,7 @@ describe('POST /signUp', () => {
     expect(body.password).toBe('12345');
   });
   test('should return 400 status code and an error message', async () => {
-    await request(app)
-      .post('/api/v1/signUp')
-      .send({ username: 'jules', email: 'jules@gmail.com', password: '12345' });
+    createUser();
     const { status, body } = await request(app)
       .post('/api/v1/signUp')
       .send({ username: 'ariel', email: 'jules@gmail.com', password: '12345' });
@@ -38,10 +37,8 @@ describe('POST /signUp', () => {
 });
 
 describe('POST /signIn', () => {
-  beforeEach(async () => {
-    await request(app)
-      .post('/api/v1/signUp')
-      .send({ username: 'jules', email: 'jules@gmail.com', password: '12345' });
+  beforeEach(() => {
+    createUser();
   });
   test('should return 200 status code and an access token', async () => {
     const { status } = await request(app)

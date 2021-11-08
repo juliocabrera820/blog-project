@@ -15,7 +15,7 @@
         "migrate:test": "NODE_ENV=test npx sequelize-cli db:migrate",
         "pretest": "npm run drop:test && npm run create:test && npm run migrate:test",
         "reset": "npm run drop && npm run create && npm run migrate",
-        "test": "jest --detectOpenHandles"
+        "test": "jest --detectOpenHandles --watchAll"
     },
     "repository": {
         "type": "git",

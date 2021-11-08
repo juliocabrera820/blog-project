@@ -15,7 +15,6 @@ describe('POST /users/:userId/comments', () => {
     const { status, body } = await request(app)
       .post('/api/v1/users/1/comments')
       .send({ userId: '1', movieId: '1', content: 'Testing' });
-    console.log(body);
     expect(status).toBe(201);
     expect(body.userId).toBe(1);
     expect(body.movieId).toBe(1);

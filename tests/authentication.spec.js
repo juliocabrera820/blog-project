@@ -3,11 +3,11 @@ const app = require('../src/app');
 const User = require('../src/app/models/user');
 const request = require('supertest');
 
-beforeEach(async () => {
-  await User.sync({ force: true });
-});
-
 describe('POST /signUp', () => {
+  beforeEach(async () => {
+    await User.sync({ force: true });
+  });
+
   test('should return 201 status code and registered user', async () => {
     const { status, body } = await request(app)
       .post('/api/v1/signUp')
@@ -34,15 +34,20 @@ describe('POST /signUp', () => {
       .send({ username: 'jules', email: 'jules@gmail.com', password: '' });
     expect(status).toBe(400);
     expect(body).toHaveProperty('error');
+    expect(body.error.details[0].message).toBe(
+      '"password" is not allowed to be empty'
+    );
   });
 });
 
 describe('POST /signIn', () => {
   beforeEach(async () => {
+    await User.sync({ force: true });
     await request(app)
       .post('/api/v1/signUp')
       .send({ username: 'jules', email: 'jules@gmail.com', password: '12345' });
   });
+
   test('should return 200 status code and an access token', async () => {
     const { status } = await request(app)
       .post('/api/v1/signIn')
@@ -69,5 +74,8 @@ describe('POST /signIn', () => {
       .send({ email: 'jules@gmail.com', password: '' });
     expect(status).toBe(400);
     expect(body).toHaveProperty('error');
+    expect(body.error.details[0].message).toBe(
+      '"password" is not allowed to be empty'
+    );
   });
 });

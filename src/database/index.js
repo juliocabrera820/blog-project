@@ -1,6 +1,7 @@
 const sequelize = require('sequelize');
 const config = require('../config/database');
 const User = require('../app/models/user');
+const Comment = require('../app/models/comment');
 
 let connection = {};
 
@@ -11,4 +12,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 User.init(connection);
+Comment.init(connection);
+
+User.associate(connection.models);
+Comment.associate(connection.models);
+
 module.exports = connection;

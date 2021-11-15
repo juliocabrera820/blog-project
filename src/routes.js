@@ -12,11 +12,16 @@ const authentication = require('./app/middlewares/authentication');
 
 router.post('/signUp', signUpValidator.check, authenticationController.signUp);
 router.post('/signIn', signInValidator.check, authenticationController.signIn);
-router.post('/suscription', suscriptionController.sendEmail);
+router.post('/suscription', authentication, suscriptionController.sendEmail);
 router.get('/users/:userId/comments', authentication, CommentsController.index);
-router.get('/users/:userId/comments/:commentId', CommentsController.show);
+router.get(
+  '/users/:userId/comments/:commentId',
+  authentication,
+  CommentsController.show
+);
 router.post(
   '/users/:userId/comments',
+  authentication,
   commentValidator.check,
   CommentsController.create
 );

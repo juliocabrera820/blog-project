@@ -12,18 +12,28 @@ describe('POST /users/:userId/comments', () => {
   });
 
   test('should return 200 status code and comment data', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
       .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: 'Testing' });
+      .send({ userId: '1', movieId: '1', content: 'Testing' })
+      .set('Authorization', `Bearer ${token}`);
+
     expect(status).toBe(201);
     expect(body.userId).toBe(1);
     expect(body.movieId).toBe(1);
     expect(body.content).toBe('Testing');
   });
   test('should return 400 status code and an error message', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
       .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: '' });
+      .send({ userId: '1', movieId: '1', content: '' })
+      .set('Authorization', `Bearer ${token}`);
+
     expect(status).toBe(400);
     expect(body.message).toBe('There were errors');
     expect(body).toHaveProperty('error');
@@ -32,9 +42,14 @@ describe('POST /users/:userId/comments', () => {
     );
   });
   test('should return 400 status code and an error message', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
       .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: 'test' });
+      .send({ userId: '1', movieId: '1', content: 'test' })
+      .set('Authorization', `Bearer ${token}`);
+
     expect(status).toBe(400);
     expect(body.message).toBe('There were errors');
     expect(body).toHaveProperty('error');
@@ -43,9 +58,14 @@ describe('POST /users/:userId/comments', () => {
     );
   });
   test('should return 400 status code and an error object', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
       .post('/api/v1/users/1/comments')
-      .send({ userId: '', movieId: '1', content: 'Testing' });
+      .send({ userId: '', movieId: '1', content: 'Testing' })
+      .set('Authorization', `Bearer ${token}`);
+
     expect(status).toBe(400);
     expect(body.message).toBe('There were errors');
     expect(body).toHaveProperty('error');

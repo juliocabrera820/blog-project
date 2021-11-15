@@ -8,13 +8,20 @@ const signInValidator = require('./app/validators/signInValidator');
 const signUpValidator = require('./app/validators/signUpValidator');
 const commentValidator = require('./app/validators/comment');
 
+const authentication = require('./app/middlewares/authentication');
+
 router.post('/signUp', signUpValidator.check, authenticationController.signUp);
 router.post('/signIn', signInValidator.check, authenticationController.signIn);
-router.post('/suscription', suscriptionController.sendEmail);
-router.get('/users/:userId/comments', CommentsController.index);
-router.get('/users/:userId/comments/:commentId', CommentsController.show);
+router.post('/suscription', authentication, suscriptionController.sendEmail);
+router.get('/users/:userId/comments', authentication, CommentsController.index);
+router.get(
+  '/users/:userId/comments/:commentId',
+  authentication,
+  CommentsController.show
+);
 router.post(
   '/users/:userId/comments',
+  authentication,
   commentValidator.check,
   CommentsController.create
 );

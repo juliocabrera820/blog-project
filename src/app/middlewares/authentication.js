@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
-      res.status(500).json({ message: 'Token can not be decoded', err });
+      res.status(401).json({ message: 'Token can not be decoded', err });
     } else {
       req.user = decoded;
       next();

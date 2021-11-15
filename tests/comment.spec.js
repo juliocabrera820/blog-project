@@ -25,7 +25,7 @@ describe('POST /users/:userId/comments', () => {
     expect(body.movieId).toBe(1);
     expect(body.content).toBe('Testing');
   });
-  test('should return 400 status code and an error message', async () => {
+  test('should return 400 status code and a validation message', async () => {
     const { body: token } = await request(app)
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
@@ -41,7 +41,7 @@ describe('POST /users/:userId/comments', () => {
       '"content" is not allowed to be empty'
     );
   });
-  test('should return 400 status code and an error message', async () => {
+  test('should return 400 status code and a validation message', async () => {
     const { body: token } = await request(app)
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
@@ -57,7 +57,7 @@ describe('POST /users/:userId/comments', () => {
       '"content" length must be at least 5 characters long'
     );
   });
-  test('should return 400 status code and an error object', async () => {
+  test('should return 400 status code and a validation message', async () => {
     const { body: token } = await request(app)
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
@@ -72,5 +72,22 @@ describe('POST /users/:userId/comments', () => {
     expect(body.error.details[0].message).toBe(
       '"userId" is not allowed to be empty'
     );
+  });
+  test('should return 401 status code and an error message', async () => {
+    const { status, body } = await request(app)
+      .post('/api/v1/users/1/comments')
+      .send({ userId: '', movieId: '1', content: 'Testing' });
+    expect(status).toBe(401);
+    expect(body.message).toBe('You are not authenticated');
+  });
+  test('should return 401 status code and an error message', async () => {
+    let { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
+    const { status, body } = await request(app)
+      .get('/api/v1/users/1/comments')
+      .set('Authorization', `Bearer ${token}s`);
+    expect(status).toBe(401);
+    expect(body.message).toBe('Token can not be decoded');
   });
 });

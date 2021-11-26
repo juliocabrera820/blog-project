@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const MovieCategory = require('../models/moviecategory');
 const { JWT_SECRET, EXPIRATION_TIME } = require('../../config/jwt');
 const bcrypt = require('bcrypt');
 
 class AuthenticationController {
   async signUp(req, res) {
-    const { username, email, password } = req.body;
+    const { username, email, password, categories } = req.body;
     const foundUser = await User.findOne({ where: { email } });
 
     if (foundUser) {
@@ -13,13 +14,19 @@ class AuthenticationController {
     }
 
     const encryptedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
+    const createdUser = await User.create({
       username,
       email,
       password: encryptedPassword,
     });
 
-    return res.status(201).json(user);
+    const createdCategories = await MovieCategory.bulkCreate(
+      categories.map((category) => ({
+        userId: createdUser.id,
+        name: category.name,
+      }))
+    );
+    return res.status(201).json(createdCategories);
   }
 
   async signIn(req, res) {

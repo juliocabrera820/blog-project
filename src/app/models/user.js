@@ -29,10 +29,6 @@ class User extends Model {
 
   static associate(models) {
     this.hasMany(models.Comment, { foreignKey: 'userId', as: 'comments' });
-    this.hasMany(models.MovieCategory, {
-      foreignKey: 'userId',
-      as: 'MovieCategories',
-    });
   }
 }
 

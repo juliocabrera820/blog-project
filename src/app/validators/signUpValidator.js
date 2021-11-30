@@ -6,7 +6,6 @@ class SignUpValidator {
       username: Joi.string().trim().required(),
       email: Joi.string().trim().required(),
       password: Joi.string().trim().required(),
-      categories: Joi.array().items(),
     });
     const { error } = schema.validate(req.body);
 

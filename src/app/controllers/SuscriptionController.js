@@ -4,9 +4,7 @@ const Newsletter = require('../../utils/newsletter');
 
 class SuscriptionController {
   async sendNewsletter(req, res) {
-    const users = await User.findAll({
-      include: { association: 'MovieCategories' },
-    });
+    const users = await User.findAll();
     users.forEach((user) => Newsletter.create(user.username));
     users.forEach((user) => {
       Newsletter.sendEmail(user);

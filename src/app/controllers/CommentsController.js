@@ -24,6 +24,13 @@ class CommentsController {
 
     return res.status(200).json(comment);
   }
+
+  async movieComments(req, res) {
+    const { movieId } = req.params
+    const movieComments = await Comment.findAll({ where: { movieId }, include: { association: 'user' } })
+
+    return res.status(200).json(movieComments)
+  }
 }
 
 module.exports = new CommentsController();

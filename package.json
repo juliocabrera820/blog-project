@@ -32,6 +32,7 @@
     },
     "homepage": "https://github.com/juliocabrera820/blog-project#readme",
     "dependencies": {
+        "axios": "^0.24.0",
         "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",

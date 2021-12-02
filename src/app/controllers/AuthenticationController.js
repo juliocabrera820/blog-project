@@ -13,13 +13,13 @@ class AuthenticationController {
     }
 
     const encryptedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
+    const createdUser = await User.create({
       username,
       email,
       password: encryptedPassword,
     });
 
-    return res.status(201).json(user);
+    return res.status(201).json(createdUser);
   }
 
   async signIn(req, res) {

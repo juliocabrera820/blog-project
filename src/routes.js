@@ -25,5 +25,6 @@ router.post(
   commentValidator.check,
   CommentsController.create
 );
+router.get('/movies/:movieId/comments', authentication, CommentsController.movieComments)
 
 module.exports = router;

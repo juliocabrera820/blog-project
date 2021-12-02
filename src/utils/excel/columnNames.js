@@ -2,6 +2,6 @@ module.exports = [
   'original_language',
   'original_title',
   'popularity',
-  'status',
+  'release_date',
   'title'
 ]

@@ -1,11 +1,10 @@
 module.exports = {
   header: {
-    bold: true,
-    fontSize: 12,
+    fontSize: 14,
     alignment: 'center',
     color: '#000000',
-  },
-  label: {
-    color: '#FF0000',
+    marginBottom: 16,
+    color: '#2596be',
+    fontWeigth: 300
   },
 };

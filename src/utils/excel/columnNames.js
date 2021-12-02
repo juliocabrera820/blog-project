@@ -1,4 +1,7 @@
 module.exports = [
-  'name',
-  'year'
+  'original_language',
+  'original_title',
+  'popularity',
+  'status',
+  'title'
 ]

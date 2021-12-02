@@ -1,6 +1,4 @@
-module.exports = {
-  content: [
-    { text: 'Primer parrafo', style: 'header' },
-    { text: 'segund parrafo', style: 'label' },
-  ],
-};
+module.exports = [
+  { text: 'Primer parrafo', style: 'header' },
+  { text: 'segund parrafo', style: 'label' },
+]

@@ -11,7 +11,7 @@ const exportExcel = (data, columnNames, sheetName, filepath) => {
 
 const exportMovieCategoriesToExcel = async (data, sheetName, filepath) => {
   const movies = await data
-  const movieData = movies.map(movie => ([movie.original_language, movie.original_title, movie.popularity, movie.status, movie.title]))
+  const movieData = movies.map(movie => ([movie.original_language, movie.original_title, movie.popularity, movie.release_date, movie.title]))
   exportExcel(movieData, columns, sheetName, filepath)
 }
 

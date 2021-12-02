@@ -2,7 +2,7 @@ const PDFPrinter = require('pdfmake');
 const path = require('path');
 const fonts = require('../utils/pdf/fonts');
 const styles = require('../utils/pdf/styles');
-const { content } = require('../utils/pdf/content');
+const content = require('../utils/pdf/content');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const nodemailerSendgrid = require('nodemailer-sendgrid');
@@ -34,7 +34,7 @@ class Newsletter {
       from: PROVIDER,
       to: user.email,
       subject: `Hi ${user.username}`,
-      html: '<h1>Hello, this is your newsletter</h1>',
+      html: `<h3>Dear ${user.username}, this is your weekly newsletter with the most popular movies</h3>`,
       attachments: [
         {
           filename: `newsletter_${user.username}.pdf`,

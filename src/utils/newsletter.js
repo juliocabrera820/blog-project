@@ -40,6 +40,10 @@ class Newsletter {
           filename: `newsletter_${user.username}.pdf`,
           path: path.resolve('src', 'pdfs', `newsletter_${user.username}.pdf`),
         },
+        {
+          filename: 'excel_movie.xls',
+          path: path.resolve('src', 'excelSheets', 'movies.xlsx')
+        }
       ],
     });
   }

@@ -1,7 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
 
+/**
+ * Represents a sequelize model
+ * @author
+ */
 class Comment extends Model {
   static init(sequelize) {
+    /**
+     * @param {any} sequelize - Sequelize
+     */
     super.init(
       {
         userId: {
@@ -33,7 +40,9 @@ class Comment extends Model {
       { sequelize, tableName: 'Comments' }
     );
   }
-
+  /**
+   * @param {Sequelize} models - Sequelize models
+   */
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
   }

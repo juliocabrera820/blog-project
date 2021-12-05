@@ -8,7 +8,16 @@ const nodemailer = require('nodemailer');
 const nodemailerSendgrid = require('nodemailer-sendgrid');
 const { SENDGRID_API_KEY, PROVIDER } = require('../config/sendgrid');
 
+/**
+ * Represents a service to create a newsletter
+ * @class
+ * @author
+ */
 class Newsletter {
+  /**
+   *
+   * @param {string} username - registered username
+   */
   create(username) {
     let attachment = {
       content,
@@ -24,7 +33,10 @@ class Newsletter {
     );
     PDFDocument.end();
   }
-
+  /**
+   * @async
+   * @param {*} user - registered user
+   */
   async sendEmail(user) {
     const transporter = nodemailer.createTransport(
       nodemailerSendgrid({ apiKey: SENDGRID_API_KEY })
@@ -42,8 +54,8 @@ class Newsletter {
         },
         {
           filename: 'excel_movie.xls',
-          path: path.resolve('src', 'excelSheets', 'movies.xlsx')
-        }
+          path: path.resolve('src', 'excelSheets', 'movies.xlsx'),
+        },
       ],
     });
   }

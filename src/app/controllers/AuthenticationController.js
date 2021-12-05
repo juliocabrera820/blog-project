@@ -17,6 +17,7 @@ class AuthenticationController {
       username,
       email,
       password: encryptedPassword,
+      role: 'user'
     });
 
     return res.status(201).json(createdUser);

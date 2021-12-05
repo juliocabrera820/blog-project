@@ -1,15 +1,30 @@
+/**
+ * Represents a middleware
+ * @author
+ * @param {*} req - HTTP Request
+ * @param {*} res - HTTP Response
+ * @param {*} next - callback
+ * @returns res - HTTP Response
+ */
 const authorizeAdmin = (req, res, next) => {
   if (req.user.user.role !== 'admin') {
-    return res.status(403).json({ message: 'Access denied' })
+    return res.status(403).json({ message: 'Access denied' });
   }
-  next()
-}
-
+  next();
+};
+/**
+ * Represents a middleware
+ * @author
+ * @param {*} req - HTTP Request
+ * @param {*} res - HTTP Response
+ * @param {*} next - callback
+ * @returns res - HTTP Response
+ */
 const authorizeUser = (req, res, next) => {
   if (req.user.user.role !== 'user') {
-    return res.status(403).json({ message: 'Access denied' })
+    return res.status(403).json({ message: 'Access denied' });
   }
-  next()
-}
+  next();
+};
 
-module.exports = { authorizeAdmin, authorizeUser }
+module.exports = { authorizeAdmin, authorizeUser };

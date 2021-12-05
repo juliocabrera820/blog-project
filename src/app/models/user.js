@@ -1,6 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 
+/**
+ * Represents a sequelize model
+ * @author
+ */
 class User extends Model {
+  /**
+   * @param {any} sequelize - Sequelize
+   */
   static init(sequelize) {
     super.init(
       {
@@ -23,15 +30,22 @@ class User extends Model {
           },
         },
         role: {
-          type: DataTypes.STRING
-        }
+          type: DataTypes.STRING,
+        },
       },
       { sequelize, tableName: 'Users' }
     );
   }
-
+  /**
+   * @param {Sequelize} models - Sequelize models
+   */
   static associate(models) {
-    this.hasMany(models.Comment, { foreignKey: 'userId', as: 'comments', onDelete: 'CASCADE', hooks: true });
+    this.hasMany(models.Comment, {
+      foreignKey: 'userId',
+      as: 'comments',
+      onDelete: 'CASCADE',
+      hooks: true,
+    });
   }
 }
 

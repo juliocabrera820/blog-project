@@ -3,7 +3,18 @@ const User = require('../models/user');
 const { JWT_SECRET, EXPIRATION_TIME } = require('../../config/jwt');
 const bcrypt = require('bcrypt');
 
+/**
+ * Represents a controller
+ * @class
+ * @author
+ */
 class AuthenticationController {
+  /**
+   * @async
+   * @param {req} req - HTTP Request
+   * @param {res} res - HTTP Response
+   * @returns res - HTTP
+   */
   async signUp(req, res) {
     const { username, email, password } = req.body;
     const foundUser = await User.findOne({ where: { email } });
@@ -17,12 +28,17 @@ class AuthenticationController {
       username,
       email,
       password: encryptedPassword,
-      role: 'user'
+      role: 'user',
     });
 
     return res.status(201).json(createdUser);
   }
-
+  /**
+   * @async
+   * @param {req} req - HTTP Request
+   * @param {res} res - HTTP Response
+   * @returns res - HTTP Response
+   */
   async signIn(req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });

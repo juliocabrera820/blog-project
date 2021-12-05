@@ -1,6 +1,17 @@
 const Joi = require('joi');
 
+/**
+ * Represents a validator of data
+ * @author
+ */
 class CommentValidator {
+  /**
+   * Represents a middleware
+   * @param {*} req - HTTP Request
+   * @param {*} res - HTTP Response
+   * @param {*} next - callback
+   * @returns res - HTTP Response
+   */
   check(req, res, next) {
     const schema = Joi.object({
       movieId: Joi.string().trim().required(),

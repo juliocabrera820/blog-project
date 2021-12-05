@@ -58,7 +58,7 @@ router.delete(
   CommentsController.destroy
 );
 router.get('/movies/:movieId/comments', CommentsController.movieComments);
-router.post('/admin', AdminController.create);
+router.post('/admin', signUpValidator.check, AdminController.create);
 router.delete(
   '/admin/users/:username',
   authentication,

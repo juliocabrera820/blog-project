@@ -16,13 +16,13 @@ describe('POST /users/:userId/comments', () => {
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: 'Testing' })
+      .post('/api/v1/users/comments')
+      .send({ title: 'chucky', movieId: '1', content: 'Testing' })
       .set('Authorization', `Bearer ${token}`);
 
     expect(status).toBe(201);
     expect(body.userId).toBe(1);
-    expect(body.movieId).toBe(1);
+    expect(body.title).toBe('chucky');
     expect(body.content).toBe('Testing');
   });
   test('should return 400 status code and a validation message', async () => {
@@ -30,8 +30,8 @@ describe('POST /users/:userId/comments', () => {
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: '' })
+      .post('/api/v1/users/comments')
+      .send({ movieId: '1', content: '' })
       .set('Authorization', `Bearer ${token}`);
 
     expect(status).toBe(400);
@@ -46,8 +46,8 @@ describe('POST /users/:userId/comments', () => {
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .post('/api/v1/users/1/comments')
-      .send({ userId: '1', movieId: '1', content: 'test' })
+      .post('/api/v1/users/comments')
+      .send({ movieId: '1', content: 'test' })
       .set('Authorization', `Bearer ${token}`);
 
     expect(status).toBe(400);
@@ -62,21 +62,21 @@ describe('POST /users/:userId/comments', () => {
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .post('/api/v1/users/1/comments')
-      .send({ userId: '', movieId: '1', content: 'Testing' })
+      .post('/api/v1/users/comments')
+      .send({ title: '', movieId: '1', content: 'Testing' })
       .set('Authorization', `Bearer ${token}`);
 
     expect(status).toBe(400);
     expect(body.message).toBe('There were errors');
     expect(body).toHaveProperty('error');
     expect(body.error.details[0].message).toBe(
-      '"userId" is not allowed to be empty'
+      '"title" is not allowed to be empty'
     );
   });
   test('should return 401 status code and an error message', async () => {
     const { status, body } = await request(app)
-      .post('/api/v1/users/1/comments')
-      .send({ userId: '', movieId: '1', content: 'Testing' });
+      .post('/api/v1/users/comments')
+      .send({ movieId: '1', content: 'Testing' });
     expect(status).toBe(401);
     expect(body.message).toBe('You are not authenticated');
   });
@@ -85,7 +85,7 @@ describe('POST /users/:userId/comments', () => {
       .post('/api/v1/signIn')
       .send({ email: 'jules@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .get('/api/v1/users/1/comments')
+      .get('/api/v1/users/comments')
       .set('Authorization', `Bearer ${token}s`);
     expect(status).toBe(401);
     expect(body.message).toBe('Token can not be decoded');

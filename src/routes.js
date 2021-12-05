@@ -18,6 +18,7 @@ router.get('/suscription', suscriptionController.sendNewsletter);
 router.get('/users/comments', authentication, authorizeUser, CommentsController.index);
 router.get(
   '/users/comments/:commentId',
+  authentication,
   authorizeUser,
   CommentsController.show
 );

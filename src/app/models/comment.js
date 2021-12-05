@@ -23,6 +23,12 @@ class Comment extends Model {
             len: [5, 200],
           },
         },
+        title: {
+          type: DataTypes.STRING,
+          validate: {
+            notEmpty: { msg: 'title is missing' },
+          },
+        },
       },
       { sequelize, tableName: 'Comments' }
     );

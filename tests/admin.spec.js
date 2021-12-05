@@ -78,4 +78,23 @@ describe('DELETE /admin/users/:username', () => {
     expect(status).toBe(404);
     expect(body.message).toBe('User does not exist');
   });
+  test('should return 401 status code', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'laijo@gmail.com', password: '12345' });
+    const { body, status } = await request(app)
+      .delete('/api/v1/admin/users/jules')
+    expect(status).toBe(401);
+    expect(body.message).toBe('You are not authenticated');
+  });
+  test('should return 403 status code and an error message', async () => {
+    const { body: token } = await request(app)
+      .post('/api/v1/signIn')
+      .send({ email: 'jules@gmail.com', password: '12345' });
+    const { status, body } = await request(app)
+      .delete('/api/v1/admin/users/jules')
+      .set('Authorization', `Bearer ${token}`);
+    expect(status).toBe(403);
+    expect(body.message).toBe('Access denied');
+  });
 });

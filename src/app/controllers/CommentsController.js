@@ -9,10 +9,10 @@ class CommentsController {
   }
 
   async create(req, res) {
-    const { movieId, content } = req.body;
+    const { movieId, content, title } = req.body;
     const { user: { id } } = req.user;
 
-    const comment = await Comment.create({ userId: id, movieId, content });
+    const comment = await Comment.create({ userId: id, movieId, content, title });
     return res.status(201).json(comment);
   }
 

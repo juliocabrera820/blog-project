@@ -14,9 +14,9 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       movieId: {
         type: Sequelize.INTEGER,

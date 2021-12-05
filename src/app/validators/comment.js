@@ -5,6 +5,7 @@ class CommentValidator {
     const schema = Joi.object({
       movieId: Joi.string().trim().required(),
       content: Joi.string().trim().min(5).max(200).required(),
+      title: Joi.string().trim().required(),
     });
     const { error } = schema.validate(req.body);
 

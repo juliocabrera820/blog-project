@@ -22,13 +22,16 @@ class User extends Model {
             notEmpty: { msg: 'Password is missing' },
           },
         },
+        role: {
+          type: DataTypes.STRING
+        }
       },
       { sequelize, tableName: 'Users' }
     );
   }
 
   static associate(models) {
-    this.hasMany(models.Comment, { foreignKey: 'userId', as: 'comments' });
+    this.hasMany(models.Comment, { foreignKey: 'userId', as: 'comments', onDelete: 'CASCADE', hooks: true });
   }
 }
 

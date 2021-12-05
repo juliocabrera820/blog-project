@@ -75,7 +75,7 @@ class CommentsController {
       return res.status(404).json({ message: 'Comment was not found' });
     }
     await Comment.update({ content }, { where: { id } });
-    return res.json(200).json({ message: 'comment was successfully updated' });
+    return res.json(200)
   }
   /**
    * @async
@@ -90,7 +90,7 @@ class CommentsController {
       return res.json(404).json({ message: 'comment does not exist' });
     }
     await Comment.destroy({ where: { id } });
-    return res.json(200).json({ message: 'comment was deleted' });
+    return res.json(200)
   }
   /**
    * @async

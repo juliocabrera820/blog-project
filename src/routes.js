@@ -34,6 +34,7 @@ router.get(
 );
 router.get(
   '/users/comments/:commentId',
+  authentication,
   authorizeUser,
   CommentsController.show
 );

@@ -46,7 +46,7 @@ class AdminController {
     }
 
     await User.destroy({ where: { username } });
-    return res.json(200).json({ message: 'user was removed' });
+    return res.json(200)
   }
 }
 

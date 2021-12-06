@@ -48,6 +48,11 @@ class AdminController {
     await User.destroy({ where: { email } });
     return res.json(200)
   }
+
+  async getUsers(req, res) {
+    const users = await User.findAll({ where: { role: 'user' } })
+    return res.status(200).json(users);
+  }
 }
 
 module.exports = new AdminController();

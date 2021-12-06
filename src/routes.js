@@ -65,5 +65,7 @@ router.delete(
   authorizeAdmin,
   AdminController.removeUser
 );
+router.get('/users', authentication, authorizeAdmin, AdminController.getUsers)
 
 module.exports = router;
+

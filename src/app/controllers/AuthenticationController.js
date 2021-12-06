@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 /**
  * Represents a controller
  * @class
- * @author
+ * @author Julio Cabrera
  */
 class AuthenticationController {
   /**
@@ -51,7 +51,7 @@ class AuthenticationController {
       const token = jwt.sign({ user }, JWT_SECRET, {
         expiresIn: EXPIRATION_TIME,
       });
-      return res.status(200).json(token);
+      return res.status(200).json({token, username: user.username, role: user.role});
     }
     return res.status(400).json({ message: 'Email or password incorrect' });
   }

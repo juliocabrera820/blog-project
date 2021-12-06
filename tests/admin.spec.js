@@ -64,7 +64,7 @@ describe('DELETE /admin/users/:username', () => {
       .post('/api/v1/signIn')
       .send({ email: 'laijo@gmail.com', password: '12345' });
     const { status } = await request(app)
-      .delete('/api/v1/admin/users/jules')
+      .delete('/api/v1/admin/users/jules@gmail.com')
       .set('Authorization', `Bearer ${token}`);
     expect(status).toBe(200);
   });
@@ -73,7 +73,7 @@ describe('DELETE /admin/users/:username', () => {
       .post('/api/v1/signIn')
       .send({ email: 'laijo@gmail.com', password: '12345' });
     const { status, body } = await request(app)
-      .delete('/api/v1/admin/users/yuls')
+      .delete('/api/v1/admin/users/yuls@gmail.com')
       .set('Authorization', `Bearer ${token}`);
     expect(status).toBe(404);
     expect(body.message).toBe('User does not exist');

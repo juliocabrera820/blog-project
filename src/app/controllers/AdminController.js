@@ -29,8 +29,13 @@ class AdminController {
       return res.status(404).json({ message: 'User does not exist' });
     }
 
-    await User.destroy({ where: { username }})
+    await User.destroy({ where: { username } })
     return res.json(200).json({ message: 'user was removed' })
+  }
+
+  async getUsers(req, res) {
+    const users = await User.findAll({ where: { role: 'user' } })
+    return res.status(200).json(users);
   }
 }
 

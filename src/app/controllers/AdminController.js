@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 /**
  * Represents a controller
  * @class
- * @author
+ * @author Isaac Canché
  */
 class AdminController {
   /**

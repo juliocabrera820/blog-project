@@ -11,7 +11,7 @@ const app = express();
 
 /**
  * Represents a server
- * @author
+ * @author Isaac Canché
  */
 app.use(cors());
 app.use(express.json());

@@ -8,7 +8,7 @@ const path = require('path');
 /**
  * Represents a controller
  * @class
- * @author
+ * @author Isaac Canché
  */
 class SuscriptionController {
   /**

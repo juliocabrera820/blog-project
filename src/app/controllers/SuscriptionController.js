@@ -27,7 +27,7 @@ class SuscriptionController {
           'movies',
           path.resolve('src', 'excelSheets', 'movies.xlsx')
         );
-        users.forEach((user) => Newsletter.create(user.username));
+        users.forEach((user) => Newsletter.create(movies));
         users.forEach((user) => {
           Newsletter.sendEmail(user);
         });

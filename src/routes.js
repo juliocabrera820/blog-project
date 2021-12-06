@@ -60,7 +60,7 @@ router.delete(
 router.get('/movies/:movieId/comments', CommentsController.movieComments);
 router.post('/admin', signUpValidator.check, AdminController.create);
 router.delete(
-  '/admin/users/:username',
+  '/admin/users/:email',
   authentication,
   authorizeAdmin,
   AdminController.removeUser

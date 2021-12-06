@@ -38,14 +38,14 @@ class AdminController {
    * @returns res - HTTP Response
    */
   async removeUser(req, res) {
-    const { username } = req.params;
-    const foundUser = await User.findOne({ where: { username } });
+    const { email } = req.params;
+    const foundUser = await User.findOne({ where: { email } });
 
     if (!foundUser) {
       return res.status(404).json({ message: 'User does not exist' });
     }
 
-    await User.destroy({ where: { username } });
+    await User.destroy({ where: { email } });
     return res.json(200)
   }
 }

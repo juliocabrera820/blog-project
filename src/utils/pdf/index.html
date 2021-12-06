@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter</title>
+</head>
+<body>
+  <h3>The 5 most popular movies</h3>
+  <ul>
+    {{#each movies}}
+    <li>Original language: {{this.original_language}}</li>
+    <li>Original Title: {{this.original_title}}</li>
+    <li>Popularity: {{this.popularity}}</li>
+    <li>Release date: {{this.release_date}}</li>
+    <li>Title: {{this.title}}</li>
+    <br>
+    {{/each}}
+  </ul>
+</body>
+</html>

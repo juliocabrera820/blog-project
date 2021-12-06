@@ -3,6 +3,11 @@ const config = require('../config/database');
 const User = require('../app/models/user');
 const Comment = require('../app/models/comment');
 
+/**
+ * Represent database connection
+ * @file
+ * @author
+ */
 let connection = {};
 
 if (process.env.NODE_ENV === 'development') {

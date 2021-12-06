@@ -16,6 +16,7 @@ describe('POST /signUp', () => {
     expect(body.id).toBe(1);
     expect(body.username).toBe('jules');
     expect(body.email).toBe('jules@gmail.com');
+    expect(body.role).toBe('user');
     expect(body).toHaveProperty('password');
   });
   test('should return 400 status code and an error message', async () => {

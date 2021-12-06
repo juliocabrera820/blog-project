@@ -1,6 +1,14 @@
 const { JWT_SECRET } = require('../../config/jwt');
 const jwt = require('jsonwebtoken');
 
+/**
+ * Represents a middleware
+ * @author
+ * @param {*} req - HTTP Request
+ * @param {*} res - HTTP Response
+ * @param {*} next - callback
+ * @returns res - HTTP Response
+ */
 module.exports = (req, res, next) => {
   if (!req.headers['authorization']) {
     res.status(401).json({ message: 'You are not authenticated' });

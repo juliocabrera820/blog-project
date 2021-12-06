@@ -5,6 +5,6 @@ module.exports = {
     color: '#000000',
     marginBottom: 16,
     color: '#2596be',
-    fontWeigth: 300
+    fontWeigth: 300,
   },
 };

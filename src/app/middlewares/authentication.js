@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 /**
  * Represents a middleware
- * @author
+ * @author Isaac Canché
  * @param {*} req - HTTP Request
  * @param {*} res - HTTP Response
  * @param {*} next - callback

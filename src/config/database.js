@@ -3,7 +3,7 @@ require('dotenv').config();
 /**
  * Represents configuration of database environments
  * @file
- * @author
+ * @author Julio Cabrera
  */
 module.exports = {
   development: {

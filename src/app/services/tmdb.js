@@ -13,7 +13,7 @@ const TMDB_API_KEY = process.env.TMDB_API_KEY;
 /**
  * Represents a service
  * @returns - Promise
- * @author
+ * @author Isaac Canché
  */
 module.exports = async () => {
   return axios.get(

@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 /**
  * @constant
- * @author
+ * @author Julio Cabrera
  */
 const authenticationController = require('./app/controllers/AuthenticationController');
 const suscriptionController = require('./app/controllers/SuscriptionController');
@@ -21,7 +21,7 @@ const {
 
 /**
  * Represents endpoints
- * @author
+ * @author Julio Cabrera
  */
 router.post('/signUp', signUpValidator.check, authenticationController.signUp);
 router.post('/signIn', signInValidator.check, authenticationController.signIn);

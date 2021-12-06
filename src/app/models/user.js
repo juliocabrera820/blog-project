@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 /**
  * Represents a sequelize model
- * @author
+ * @author Isaac Canché
  */
 class User extends Model {
   /**

@@ -1,6 +1,6 @@
 /**
  * Represents a middleware
- * @author
+ * @author Julio Cabrera
  * @param {*} req - HTTP Request
  * @param {*} res - HTTP Response
  * @param {*} next - callback
@@ -14,7 +14,7 @@ const authorizeAdmin = (req, res, next) => {
 };
 /**
  * Represents a middleware
- * @author
+ * @author Julio Cabrera
  * @param {*} req - HTTP Request
  * @param {*} res - HTTP Response
  * @param {*} next - callback

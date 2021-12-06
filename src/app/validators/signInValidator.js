@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 /**
  * Represents a validator of data
- * @author
+ * @author Julio Cabrera
  */
 class SignInValidator {
   /**

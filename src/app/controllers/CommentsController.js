@@ -3,7 +3,7 @@ const Comment = require('../models/comment');
 /**
  * Represents a controller
  * @class
- * @author
+ * @author Julio Cabrera
  */
 class CommentsController {
   /**

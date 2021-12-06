@@ -34,5 +34,7 @@ router.delete('/users/comments/:id', authentication, authorizeUser, CommentsCont
 router.get('/movies/:movieId/comments', CommentsController.movieComments)
 router.post('/admin', AdminController.create)
 router.delete('/admin/users/:username', authentication, authorizeAdmin, AdminController.removeUser)
+router.get('/users', authentication, authorizeAdmin, AdminController.getUsers)
 
 module.exports = router;
+
